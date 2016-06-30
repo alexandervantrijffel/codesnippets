@@ -1,0 +1,10 @@
+<system.webserver>
+	<rewrite>
+	  <rules>
+		<rule name="Rewrite to www">
+		  <match url="^http[s]{0,1}:\/\/smithanddoe(.)*" />
+		  <action type="Rewrite" url="https://www.smithanddoe{R:1}" />
+		</rule>
+	  </rules>
+	</rewrite>
+<system.webserver>

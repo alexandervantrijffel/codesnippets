@@ -1,0 +1,19 @@
+  <system.webserver>
+    <rewrite>
+			<outboundRules>
+				<rule name="Remove RESPONSE_Server" >
+					<match serverVariable="RESPONSE_Server" pattern=".+" />
+					<action type="Rewrite" value="Webserver" />
+				</rule>
+				<rule name="Add Strict-Transport-Security when HTTPS" enabled="true">
+					<match serverVariable="RESPONSE_Strict_Transport_Security"
+						pattern=".*" />
+					<conditions>
+						<add input="{HTTPS}" pattern="on" ignoreCase="true" />
+					</conditions>
+					<action type="Rewrite" value="max-age=31536000" />
+				</rule>
+			</outboundRules>
+		</rewrite>
+	</system.webserver>
+		
